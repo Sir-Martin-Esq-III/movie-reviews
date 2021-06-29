@@ -1,0 +1,29 @@
+//var
+$width:20%;
+$height:100vh;
+
+ul,p,li,h1{
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar{
+    width: $width;
+    height: $height;
+    position: fixed;
+    top:0;
+    background-color: brown;
+
+    .sidebar-list{
+        height: inherit;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        list-style-type: none;
+        .sidebar-items  {
+            color: white;
+
+        }
+    }
+}

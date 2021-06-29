@@ -1,0 +1,35 @@
+//vars
+$width:100vw/4;
+$height:200px;
+
+.card-container{
+    margin-inline: 1%;
+    margin-bottom: 1%;
+    width: $width;
+    height: $height;
+    position: relative;
+
+    img{
+        border-radius: 20px;
+        width: inherit;
+        height: inherit;
+    }
+
+    .lower-content{
+        border-radius: 20px;
+        position:absolute;
+        background-color: white;
+        bottom:3%;
+        width: 100%;
+        height: fit-content;
+        visibility: hidden;
+        
+    }
+}
+
+.card-container:hover{
+    .lower-content{
+        visibility: visible;
+    }
+}
+

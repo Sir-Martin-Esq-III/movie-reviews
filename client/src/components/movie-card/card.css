@@ -1,0 +1,30 @@
+.card-container {
+  margin-inline: 1%;
+  margin-bottom: 1%;
+  width: 25vw;
+  height: 200px;
+  position: relative;
+}
+
+.card-container img {
+  border-radius: 20px;
+  width: inherit;
+  height: inherit;
+}
+
+.card-container .lower-content {
+  border-radius: 20px;
+  position: absolute;
+  background-color: white;
+  bottom: 3%;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  visibility: hidden;
+}
+
+.card-container:hover .lower-content {
+  visibility: visible;
+}
+/*# sourceMappingURL=card.css.map */
