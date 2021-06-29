@@ -11,20 +11,20 @@
         "name":"JoJo Rabbit",
         "imgsrc":"https://m.media-amazon.com/images/M/MV5BZjU0Yzk2MzEtMjAzYy00MzY0LTg2YmItM2RkNzdkY2ZhN2JkXkEyXkFqcGdeQXVyNDg4NjY5OTQ@._V1_.jpg",
         "Synopsis":"JoJo synopsis",
-        "rating":"9"  
+        "rating":"8"  
     },
     {
         "id":2,
         "name":"6 Days",
         "imgsrc":"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQqf0ikW-XrwySWWghggQaWyZtHhEkDOtx9jYAC7Yezo73xoBLC",
         "Synopsis":"6 Days synopsis" ,
-        "rating":"9"
+        "rating":"7"
     },
     {
         "id":3,
         "name":"Dredd",
         "imgsrc":"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS2D45Cash42XgibpuYBl6FIpzhcTe5zB4SFDmt_IaQuGTNikm9",
         "Synopsis":"Dredd synopsis"  ,
-        "rating":"9"
+        "rating":"6"
     }
 ]
