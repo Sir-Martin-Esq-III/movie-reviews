@@ -5,7 +5,7 @@ $height:200px;
 .card-container{
     margin-inline: 1%;
     margin-bottom: $height;
-    width: $width;
+    width: 300px;
     height: $height;
     position: relative;
     display: flex;
@@ -15,7 +15,7 @@ $height:200px;
 
 
     img{
-        border-radius: 20px 20px 0 0;
+        border-radius: 20px;
         width: inherit;
         height: inherit;
         border-right: 10px solid transparent;
@@ -40,6 +40,7 @@ $height:200px;
     cursor: grab;
     img{
         animation: lowerOpacity 300ms ease-in forwards;
+        border-radius: 20px 20px 0 0;
     }
     .lower-content{
         animation: lowerOpacity 300ms ease-in forwards ;
