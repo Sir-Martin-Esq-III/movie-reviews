@@ -3,6 +3,7 @@ import './App.css';
 import Sidebar from './components/sidebar/Sidebar';
 import Movie from './components/movie-card/Movie';
 import movieJson from './films.json'
+import MoviePage from './components/movie-page/Movie-page'
 
 
 type movieItems={
@@ -22,6 +23,7 @@ console.log(data)
 export const App:React.FC=()=>{
   return (
     <div className="App">
+      <MoviePage name={data[0].name}rating={data[0].rating} synopsis={data[0].SynopsisFull} imgsrc={data[0].imgsrc}/>
   
       <div className="movies-container">
         {data.map((list:movieItems)=>

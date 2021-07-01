@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+h3,p{
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+.moviePage{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: fit-content;
+    background-color:#292929;
+    .movie-image{
+        width: inherit;
+        height: 20%;
+        img{
+            width: inherit;
+            height: 100%;
+        }
+    }
+    .Synopsis{
+        padding-inline: 5%;
+        font-size: 1.5em;
+        text-align: center;
+    }
+    .rating{
+        text-align: center;
+        font-size: 2rem;
+    }
+    .review-container{
+        display: flex;
+        flex-direction: column;
+        .reviews{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: fit-content;
+            justify-content: center;
+            .reviewLeft{
+                padding-right: 2%;
+                font-size: 1.9rem;
+            }
+            .reviewsRight{
+                width: 70%;
+                font-size: 1.3rem;
+                background-color: #141414;
+            }
+
+        }
+    }
+    .add-review{
+    }
+}

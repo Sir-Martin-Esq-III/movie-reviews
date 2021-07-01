@@ -1,30 +1,98 @@
 .card-container {
   margin-inline: 1%;
-  margin-bottom: 1%;
+  margin-bottom: 200px;
   width: 25vw;
   height: 200px;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .card-container img {
-  border-radius: 20px;
+  border-radius: 20px 20px 0 0;
   width: inherit;
   height: inherit;
+  border-right: 10px solid transparent;
 }
 
 .card-container .lower-content {
-  border-radius: 20px;
-  position: absolute;
-  background-color: white;
-  bottom: 3%;
+  position: relative;
+  top: -1px;
+  border-radius: 0 0 20px 20px;
+  background-color: #292929;
+  color: white;
   width: 100%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  visibility: hidden;
+  display: none;
+  border-bottom: 10px solid #141414;
+}
+
+.card-container:hover {
+  -webkit-animation: scaleUp 200ms ease-in forwards;
+          animation: scaleUp 200ms ease-in forwards;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.card-container:hover img {
+  -webkit-animation: lowerOpacity 300ms ease-in forwards;
+          animation: lowerOpacity 300ms ease-in forwards;
 }
 
 .card-container:hover .lower-content {
-  visibility: visible;
+  -webkit-animation: lowerOpacity 300ms ease-in forwards;
+          animation: lowerOpacity 300ms ease-in forwards;
+  display: block;
+}
+
+@-webkit-keyframes lowerOpacity {
+  from {
+    opacity: 0;
+    border-right: 10px solid transparent;
+  }
+  to {
+    opacity: 100;
+    border-right: 10px solid #141414;
+  }
+}
+
+@keyframes lowerOpacity {
+  from {
+    opacity: 0;
+    border-right: 10px solid transparent;
+  }
+  to {
+    opacity: 100;
+    border-right: 10px solid #141414;
+  }
+}
+
+@-webkit-keyframes scaleUp {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
 }
 /*# sourceMappingURL=card.css.map */

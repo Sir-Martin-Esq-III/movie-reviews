@@ -4,32 +4,72 @@ $height:200px;
 
 .card-container{
     margin-inline: 1%;
-    margin-bottom: 1%;
+    margin-bottom: $height;
     width: $width;
     height: $height;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    
+   
+
 
     img{
-        border-radius: 20px;
+        border-radius: 20px 20px 0 0;
         width: inherit;
         height: inherit;
+        border-right: 10px solid transparent;
     }
 
     .lower-content{
-        border-radius: 20px;
-        position:absolute;
-        background-color: white;
-        bottom:3%;
+        position: relative;
+        top: -1px;
+        border-radius: 0 0 20px 20px;
+        background-color: #292929;
+        color:white;
         width: 100%;
         height: fit-content;
-        visibility: hidden;
+        display: none;
+        border-bottom: 10px solid #141414;
         
     }
 }
 
 .card-container:hover{
+    animation: scaleUp 200ms ease-in forwards;
+    cursor: grab;
+    img{
+        animation: lowerOpacity 300ms ease-in forwards;
+    }
     .lower-content{
-        visibility: visible;
+        animation: lowerOpacity 300ms ease-in forwards ;
+        display: block;
     }
 }
 
+
+@keyframes lowerOpacity {
+
+    from{
+        opacity: 0;
+        border-right: 10px solid transparent;
+        
+
+    }
+    to{
+        opacity: 100;
+        border-right: 10px solid #141414;
+    }
+    
+}
+
+@keyframes scaleUp {
+    from{
+        transform: scale(1);
+    }
+
+    to{
+        transform: scale(1.1);
+    }
+    
+}

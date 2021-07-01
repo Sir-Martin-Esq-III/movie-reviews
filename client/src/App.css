@@ -5,6 +5,13 @@
   background-color: #292929;
   height: 100vh;
   align-content: flex-start;
+  justify-content: space-around;
+  padding:5%;
 
 
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
 }

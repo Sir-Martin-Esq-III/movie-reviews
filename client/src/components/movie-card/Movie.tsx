@@ -8,7 +8,7 @@ interface Props{
     synopsis?:string
 }
 
-const onclickHandler:React.MouseEventHandler<HTMLDivElement>=()=>{
+const onclickHandler:React.MouseEventHandler<HTMLDivElement>=(event)=>{
     console.log("clicked")
 
 
