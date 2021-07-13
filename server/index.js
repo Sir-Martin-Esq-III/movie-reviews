@@ -16,11 +16,11 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.get('/API/movieData/:name?',(req,res)=>{
-    if (req.params.name==="LUCA"){
-        console.log("luca")
-    }
-})
+// app.get('/API/movieData/:name?',(req,res)=>{
+//     if (req.params.name==="LUCA"){
+//         console.log("luca")
+//     }
+// })
 
 app.get('/API/movieData', (req, res) => {
   res.json(data)
