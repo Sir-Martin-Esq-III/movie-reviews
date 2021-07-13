@@ -1,0 +1,21 @@
+.header-container{
+    position: fixed;
+    width: 100vw;
+    height: 5%;
+    display: flex;
+    background-color: #1d1d1d;
+    color: white;
+    justify-content: space-around;
+    z-index: 100;
+    align-items: center;
+
+    .searchbar{}
+    .Home{
+        a{
+            text-decoration: none;
+            color: white;
+        
+        }
+    }
+    .Login{}
+}

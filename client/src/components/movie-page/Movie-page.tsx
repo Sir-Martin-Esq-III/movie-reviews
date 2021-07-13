@@ -13,6 +13,14 @@ interface Props{
     }]
 }
 
+const colorRatings={
+    green:"#53fc72",
+    amber:"#fce653",
+    red:"#ff6254"
+}
+
+
+
 const review=[
     {
     id:0,
@@ -32,18 +40,29 @@ const review=[
     userRating:7,
     ReviewContent: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam velit voluptatibus nesciunt."
     },
-
-
 ]
 
 export const MoviePage:React.FC<Props>=({name,imgsrc,rating,synopsis,reviews})=>{
+    const colorRating=()=>{
+        let color:string=""
+        if (rating<3){
+            return colorRatings.red
+        }else if (rating<6){
+            return colorRatings.amber
+        }else{
+            return colorRatings.green
+        }
+    }
+
+
+
     return (
         <div className="moviePage">
             <div className="movie-image">
                 <img src={imgsrc} alt={`${name} movie poster`} />
             </div>
             <div className="rating">
-                <p>{rating} /10</p>
+                <p><span style={{color:colorRating()}}>{rating}</span> /10</p>
             </div>
             <div className="Synopsis">
                 <p>{synopsis} </p>

@@ -5,7 +5,8 @@ import Movie from './components/movie-card/Movie';
 import movieJson from './films.json'
 import MoviePage from './components/movie-page/Movie-page'
 import axios from 'axios'
-import Home from "./components/home/Home";
+import Home from './components/home/Home';
+import Header from './components/header/Header';
 
 import {
   BrowserRouter as Router,
@@ -32,7 +33,10 @@ let data=JSON.parse(filmJson)
 export const App:React.FC=()=>{
 
   return (
+    <div>
+    
     <Router>
+    <Header/>
     <Switch>
       <Route path="/Luca">
         <MoviePage name={data[0].name}rating={data[0].rating} synopsis={data[0].SynopsisFull} imgsrc={data[0].imgsrc}/>
@@ -41,7 +45,11 @@ export const App:React.FC=()=>{
         <Home/>
       </Route>
     </Switch>
-  </Router>);
+  </Router>
+  </div>
+  
+  
+  );
 }
 
 export default App;

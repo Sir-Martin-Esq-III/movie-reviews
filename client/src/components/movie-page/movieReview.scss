@@ -10,12 +10,14 @@ h3,p{
     flex-direction: column;
     width: 100vw;
     height: fit-content;
+    align-items: center;
     background-color:#292929;
+    padding-top: 10vh;
     .movie-image{
-        width: inherit;
+        width: 90%;
         height: 20%;
         img{
-            width: inherit;
+            width: 100%;
             height: 100%;
         }
     }

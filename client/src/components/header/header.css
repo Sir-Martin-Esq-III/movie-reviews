@@ -1,0 +1,22 @@
+.header-container {
+  position: fixed;
+  width: 100vw;
+  height: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #1d1d1d;
+  color: white;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  z-index: 100;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header-container .Home a {
+  text-decoration: none;
+  color: white;
+}
+/*# sourceMappingURL=header.css.map */
