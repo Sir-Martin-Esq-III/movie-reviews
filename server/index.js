@@ -9,7 +9,6 @@ import fs from 'fs'
 let rawdata = fs.readFileSync('./static/movieData.json')
 let data = JSON.parse(rawdata);
 
-
 app.use(cors())
 
 app.get('/', (req, res) => {

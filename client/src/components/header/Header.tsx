@@ -18,7 +18,7 @@ const Header = (props: Props) => {
         <div className="header-container">
             
             <div className="searchbar">
-                THIS IS WHERE THE SEARCHBAR WILL GO
+                <input type="text" name="text" id="text"/>
             </div>
             <div className="Home">
                 <h1>

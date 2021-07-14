@@ -49,12 +49,12 @@
 }
 
 .card-container:hover .lower-content {
-  -webkit-animation: lowerOpacity 300ms ease-in forwards;
-          animation: lowerOpacity 300ms ease-in forwards;
+  -webkit-animation: lowerOpacityLower 300ms ease-in forwards;
+          animation: lowerOpacityLower 300ms ease-in forwards;
   display: block;
 }
 
-@-webkit-keyframes lowerOpacity {
+@-webkit-keyframes lowerOpacityLower {
   from {
     opacity: 0;
     border-right: 10px solid transparent;
@@ -65,13 +65,31 @@
   }
 }
 
-@keyframes lowerOpacity {
+@keyframes lowerOpacityLower {
   from {
     opacity: 0;
     border-right: 10px solid transparent;
   }
   to {
     opacity: 100;
+    border-right: 10px solid #141414;
+  }
+}
+
+@-webkit-keyframes lowerOpacity {
+  from {
+    border-right: 10px solid transparent;
+  }
+  to {
+    border-right: 10px solid #141414;
+  }
+}
+
+@keyframes lowerOpacity {
+  from {
+    border-right: 10px solid transparent;
+  }
+  to {
     border-right: 10px solid #141414;
   }
 }

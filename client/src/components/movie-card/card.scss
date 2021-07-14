@@ -41,14 +41,12 @@ $height:200px;
         border-radius: 20px 20px 0 0;
     }
     .lower-content{
-        animation: lowerOpacity 300ms ease-in forwards ;
+        animation: lowerOpacityLower 300ms ease-in forwards ;
         display: block;
     }
 }
 
-
-@keyframes lowerOpacity {
-
+@keyframes lowerOpacityLower {
     from{
         opacity: 0;
         border-right: 10px solid transparent;
@@ -57,6 +55,18 @@ $height:200px;
     }
     to{
         opacity: 100;
+        border-right: 10px solid #141414;
+    }
+    
+}
+@keyframes lowerOpacity {
+
+    from{
+        border-right: 10px solid transparent;
+        
+
+    }
+    to{
         border-right: 10px solid #141414;
     }
     
