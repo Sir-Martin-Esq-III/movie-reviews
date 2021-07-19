@@ -33,7 +33,7 @@ let data=JSON.parse(filmJson)
 export const App:React.FC=()=>{
 
   return (
-    <div>
+    <div className="app">
     
     <Router>
     <Header/>

@@ -1,3 +1,16 @@
+
+body{
+  height: 100vh;
+}
+
+#root{height: 100vh;
+}
+
+.app{
+  height: 100vh;
+}
+
+
 .movies-container{
   display: flex;
   flex-direction: row;
@@ -7,15 +20,12 @@
   align-content: flex-start;
   justify-content: space-around;
   padding:5%;
+  height: 95%;
   
 
 
 }
 
 a{text-decoration: none;
-}
-
-.App{
-  display: flex;
-  flex-direction: column;
+  height: 200px;
 }

@@ -8,7 +8,7 @@ type movieItems={
   
   id:number,
   name:string,
-  Synopsis:string,
+  synopsis:string,
   imgsrc:string,
   rating:number
 }
@@ -38,11 +38,11 @@ export const Home:React.FC<Props>=()=> {
       FetchMovieData()
     }, [])
   
-  
+
     return (
         <div className="movies-container">
           {movieData.map((list:movieItems)=>        
-              <Movie key={list.id} name={list.name}rating={list.rating} synopsis={list.Synopsis} imgsrc={list.imgsrc}/>
+              <Movie key={list.id} name={list.name}rating={list.rating} synopsis={list.synopsis.slice(0,150)+"..."} imgsrc={list.imgsrc}/>
           )}        
         </div>  
     )
