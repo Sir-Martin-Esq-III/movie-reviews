@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Movie from '../movie-card/Movie';
 import axios from 'axios'
 
-import {Link} from "react-router-dom";
-
 type movieItems={
-  
   id:number,
   name:string,
   synopsis:string,
@@ -13,15 +10,10 @@ type movieItems={
   rating:number
 }
 
-
-
 interface Props{
-
 }
 export const Home:React.FC<Props>=()=> {
-
     const [movieData,SetmoveieData]=useState([])
-
     const FetchMovieData=()=>{
       console.log("Fetching movie data");
       axios({
@@ -32,7 +24,6 @@ export const Home:React.FC<Props>=()=> {
       console.log(res.data)
     })
   }
-  
     //On page load fetch the movie data
     useEffect(() => {
       FetchMovieData()

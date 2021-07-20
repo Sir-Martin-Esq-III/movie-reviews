@@ -23,16 +23,22 @@ app.use(cors())
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-
+//Test endpoint 
 app.get('/test',(req,res)=>{
-  MovieDetails.find()
+})
+
+
+//API to fetch data on any movie
+app.get('/API/movieData/:nameID',(req,res)=>{
+  const name=req.params.nameID
+  console.log(name);
+  MovieDetails.find({name:name}).exec()
   .then((response)=>{
     console.log(response);
     res.send(response)
-  }).catch((err)=>console.log(err))
-  
+  }).catch((err)=>console.log(err)) 
+ })
 
-})
 
 app.get('/API/movieData', (req, res) => {
   MovieDetails.find()

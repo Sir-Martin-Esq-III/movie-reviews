@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import {useParams} from "react-router-dom";
+import axios from 'axios'
 import './movieReview.css'
 
 interface Props{
-    name:string,
-    imgsrc?:string,
-    rating:number,
-    synopsis?:string    
-    reviews?:[{
-        username:string,
-        userRating:number,
-        reviewContent:string
-    }]
 }
+
+interface IMovieData{
+    name:string,
+    imgsrc:string,
+    synopsis:string,
+    rating:string
+}
+
+interface ParamTypes {
+    movieID: string
+}
+
 
 const colorRatings={
     green:"#53fc72",
@@ -42,9 +47,13 @@ const review=[
     },
 ]
 
-export const MoviePage:React.FC<Props>=({name,imgsrc,rating,synopsis,reviews})=>{
-    const colorRating=()=>{
-        let color:string=""
+export const MoviePage:React.FC<Props>=()=>{
+
+    //const [movieData,SetmoveieData]=useState<MovieData>({name,imgsrc,synopsis,rating})
+    const [movieData,SetmoveieData]=useState<IMovieData>({name:"",imgsrc:"",synopsis:"",rating:""})
+    let { movieID } = useParams<ParamTypes>()
+    
+    const colorRating=(rating:Number)=>{
         if (rating<3){
             return colorRatings.red
         }else if (rating<6){
@@ -53,19 +62,32 @@ export const MoviePage:React.FC<Props>=({name,imgsrc,rating,synopsis,reviews})=>
             return colorRatings.green
         }
     }
+    
+      //On page load fetch the movie data
+      useEffect(() => {
+        console.log("Fetching movie data");
+        axios({
+          method: 'get',
+          url: `http://127.0.0.1:8000/API/movieData/${movieID}`
+        }).then((res)=>{
+            SetmoveieData(res.data[0])
+            console.log(res.data)
+         })
+      },[movieID])
 
-
+      
 
     return (
         <div className="moviePage">
             <div className="movie-image">
-                <img src={imgsrc} alt={`${name} movie poster`} />
+                <iframe width="100%" height="500px"  title="title" src="https://www.youtube.com/embed/mYfJxlgR2jw" frameBorder="0"></iframe>
+                {/* <img src={movieData.imgsrc} alt={`${movieData.name} movie poster`} /> */}
             </div>
             <div className="rating">
-                <p><span style={{color:colorRating()}}>{rating}</span> /10</p>
+                <p><span style={{color:colorRating(parseInt(movieData.rating))}}>{movieData.rating}</span> /10</p>
             </div>
             <div className="Synopsis">
-                <p>{synopsis} </p>
+                <p>{movieData.synopsis} </p>
             </div>
             <div className="review-container">
 
@@ -79,9 +101,7 @@ export const MoviePage:React.FC<Props>=({name,imgsrc,rating,synopsis,reviews})=>
                             <p>{rev.ReviewContent}</p>
                         </div>
                     </div>
-
                 )}
-                
             </div> 
             <div className="add-review">
             </div>             
