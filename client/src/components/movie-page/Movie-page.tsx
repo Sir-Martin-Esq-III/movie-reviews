@@ -10,7 +10,8 @@ interface IMovieData{
     name:string,
     imgsrc:string,
     synopsis:string,
-    rating:string
+    rating:string,
+    trailer:string
 }
 
 interface ParamTypes {
@@ -50,7 +51,7 @@ const review=[
 export const MoviePage:React.FC<Props>=()=>{
 
     //const [movieData,SetmoveieData]=useState<MovieData>({name,imgsrc,synopsis,rating})
-    const [movieData,SetmoveieData]=useState<IMovieData>({name:"",imgsrc:"",synopsis:"",rating:""})
+    const [movieData,SetmoveieData]=useState<IMovieData>({name:"",imgsrc:"",synopsis:"",rating:"",trailer:""})
     let { movieID } = useParams<ParamTypes>()
     
     const colorRating=(rating:Number)=>{
@@ -80,7 +81,7 @@ export const MoviePage:React.FC<Props>=()=>{
     return (
         <div className="moviePage">
             <div className="movie-image">
-                <iframe width="100%" height="500px"  title="title" src="https://www.youtube.com/embed/mYfJxlgR2jw" frameBorder="0"></iframe>
+                <iframe width="100%" height="500px"  title="title" src={`${movieData.trailer}`} frameBorder="0"></iframe>
                 {/* <img src={movieData.imgsrc} alt={`${movieData.name} movie poster`} /> */}
             </div>
             <div className="rating">

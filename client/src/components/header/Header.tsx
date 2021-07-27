@@ -28,7 +28,11 @@ const Header = (props: Props) => {
                 </h1>
             </div>
             <div className="Login">
-                <h1>Login</h1>
+                <h1>
+                    <Link to="/login/addmovie">
+                        Login
+                    </Link>
+                    </h1>
             </div>
             
 
