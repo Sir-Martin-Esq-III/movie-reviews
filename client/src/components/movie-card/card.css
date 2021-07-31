@@ -36,6 +36,7 @@
 }
 
 .card-container:hover {
+  z-index: 10000;
   -webkit-animation: scaleUp 200ms ease-in forwards;
           animation: scaleUp 200ms ease-in forwards;
   cursor: -webkit-grab;

@@ -47,7 +47,8 @@ app.get('/API/movieData', (req, res) => {
   })
 })
 
-app.post('API/addMovie',(req,res)=>{
-  console.log(req);
+app.post('/API/addMovie',(req,res)=>{
+  console.log(req.config);
+  res.send("Vaild movie sent")
 })
 

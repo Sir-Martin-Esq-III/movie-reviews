@@ -34,6 +34,7 @@ $height:200px;
 }
 
 .card-container:hover{
+    z-index: 10000;
     animation: scaleUp 200ms ease-in forwards;
     cursor: grab;
     img{
