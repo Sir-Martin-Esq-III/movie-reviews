@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {useParams} from "react-router-dom";
 import axios from 'axios'
+import Loading from '../loading/Loading';
 import './movieReview.css'
 
 interface Props{
@@ -52,6 +53,7 @@ export const MoviePage:React.FC<Props>=()=>{
 
     //const [movieData,SetmoveieData]=useState<MovieData>({name,imgsrc,synopsis,rating})
     const [movieData,SetmoveieData]=useState<IMovieData>({name:"",imgsrc:"",synopsis:"",rating:"",trailer:""})
+    const [loading,SetLoading]=useState(true)
     let { movieID } = useParams<ParamTypes>()
     
     const colorRating=(rating:Number)=>{
@@ -72,6 +74,7 @@ export const MoviePage:React.FC<Props>=()=>{
           url: `http://127.0.0.1:8000/API/movieData/${movieID}`
         }).then((res)=>{
             SetmoveieData(res.data[0])
+            SetLoading(false)
             console.log(res.data)
          })
       },[movieID])
@@ -80,6 +83,7 @@ export const MoviePage:React.FC<Props>=()=>{
 
     return (
         <div className="moviePage">
+            {loading && <Loading/>}
             <div className="movie-image">
                 <iframe width="100%" height="500px"  title="title" src={`${movieData.trailer}`} frameBorder="0"></iframe>
                 {/* <img src={movieData.imgsrc} alt={`${movieData.name} movie poster`} /> */}
