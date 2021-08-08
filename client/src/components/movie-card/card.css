@@ -1,7 +1,7 @@
 .card-container {
   margin-inline: 1%;
   margin-bottom: 200px;
-  width: 300px;
+  width: 100%;
   height: 200px;
   position: relative;
   display: -webkit-box;
@@ -16,8 +16,8 @@
 
 .card-container img {
   border-radius: 20px;
-  width: inherit;
-  height: inherit;
+  max-width: 300px;
+  max-height: 100%;
   border-right: 10px solid transparent;
 }
 
@@ -27,7 +27,7 @@
   border-radius: 0 0 20px 20px;
   background-color: #292929;
   color: white;
-  width: 100%;
+  width: 300px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;

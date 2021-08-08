@@ -5,7 +5,7 @@ $height:200px;
 .card-container{
     margin-inline: 1%;
     margin-bottom: $height;
-    width: 300px;
+    width: 100%;
     height: $height;
     position: relative;
     display: flex;
@@ -14,8 +14,9 @@ $height:200px;
 
     img{
         border-radius: 20px;
-        width: inherit;
-        height: inherit;
+        max-width: 300px;
+        max-height: 100%;
+        //object-fit: cover;
         border-right: 10px solid transparent;
     }
 
@@ -25,7 +26,7 @@ $height:200px;
         border-radius: 0 0 20px 20px;
         background-color: #292929;
         color:white;
-        width: 100%;
+        width: 300px;
         height: fit-content;
         display: none;
         border-bottom: 10px solid #141414;
