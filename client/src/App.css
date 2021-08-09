@@ -27,6 +27,7 @@ body{
 
 a{text-decoration: none;
   height: 200px;
+  width: fit-content;
 }
 
 
@@ -44,7 +45,11 @@ a{text-decoration: none;
 
 @media only screen and (min-width: 1440px) {
   .movies-container{
+    
     grid-template-columns: 26.6vw 26.6vw 26.6vw;
+  }
+  img{
+    width: 26.6vw;
   }
 }
 
@@ -53,3 +58,4 @@ a{text-decoration: none;
     grid-template-columns: 20vw 20vw 20vw 20vw;
   }
 }
+
