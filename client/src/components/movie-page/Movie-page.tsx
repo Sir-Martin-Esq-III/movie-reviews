@@ -79,21 +79,36 @@ export const MoviePage:React.FC<Props>=()=>{
          })
       },[movieID])
 
-      
+      //movieData.trailer
 
     return (
         <div className="moviePage">
             {loading && <Loading/>}
-            <div className="movie-image">
-                <iframe width="100%" height="500px"  title="title" src={`${movieData.trailer}`} frameBorder="0"></iframe>
-                {/* <img src={movieData.imgsrc} alt={`${movieData.name} movie poster`} /> */}
+
+            <div className="upper-container">
+                <div className="upper-left">
+                    <div className="movie-image">
+                        <iframe title="title" src={`${movieData.trailer}`} frameBorder="0"></iframe>
+                    </div>
+                </div>
+                <div className="upper-right">
+                    <div className="Title">
+                        <h1>{movieData.name}</h1>
+                    </div>
+                    <div className="Synopsis">
+                        <p>{movieData.synopsis} </p>
+                    </div>
+                    <div className="rating">
+                        <p><span style={{color:colorRating(parseInt(movieData.rating))}}>{movieData.rating}</span> /10</p>
+                    </div>
+                    
+                </div>
             </div>
-            <div className="rating">
-                <p><span style={{color:colorRating(parseInt(movieData.rating))}}>{movieData.rating}</span> /10</p>
-            </div>
-            <div className="Synopsis">
-                <p>{movieData.synopsis} </p>
-            </div>
+
+
+            <h1>This is what we had to say about <u>{movieData.name}</u></h1>
+
+
             <div className="review-container">
 
                 {review.map((rev)=>

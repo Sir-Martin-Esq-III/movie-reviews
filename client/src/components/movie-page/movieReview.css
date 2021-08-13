@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
-h3, p {
+h3, h1, p {
   color: white;
   font-family: 'Lato', sans-serif;
 }
@@ -23,27 +23,8 @@ h3, p {
   padding-top: 10vh;
 }
 
-.moviePage .movie-image {
-  aspect-ratio: 16/9;
-}
-
-.moviePage .movie-image img {
-  width: 100%;
-  height: 100%;
-}
-
-.moviePage .Synopsis {
-  padding-inline: 5%;
-  font-size: 1.5em;
-  text-align: center;
-}
-
-.moviePage .rating {
-  text-align: center;
-  font-size: 2rem;
-}
-
-.moviePage .review-container {
+.moviePage .upper-container {
+  background-color: #0A0A0A70;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,33 +32,73 @@ h3, p {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 80%;
+  height: 50%;
 }
 
-.moviePage .review-container .reviews {
+.moviePage .upper-container .upper-left {
+  width: 100%;
+  height: 100%;
+}
+
+.moviePage .upper-container .upper-left iframe {
+  aspect-ratio: 16/9;
+  width: 100%;
+  height: 200%;
+}
+
+.moviePage .upper-container .upper-right {
+  color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: 100%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-inline: 5%;
+}
+
+.moviePage .review-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 75%;
+      grid-template-columns: 75%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  max-width: 80%;
 }
 
-.moviePage .review-container .reviews .reviewLeft {
-  padding-right: 2%;
-  font-size: 1.9rem;
+.moviePage .review-container .reviews {
+  background-color: #0A0A0A70;
+  margin-bottom: 5%;
 }
 
-.moviePage .review-container .reviews .reviewsRight {
-  width: 70%;
-  font-size: 1.3rem;
-  background-color: #141414;
+@media only screen and (min-width: 1440px) {
+  .moviePage .upper-container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .moviePage .upper-container .upper-right {
+    font-size: 1.1vw;
+    width: 50%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .moviePage .review-container {
+    -ms-grid-columns: 45%  45%;
+        grid-template-columns: 45%  45%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    font-size: .8vw;
+  }
 }
 /*# sourceMappingURL=movieReview.css.map */
