@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Movie from '../movie-card/Movie';
 import Loading from '../loading/Loading';
 import axios from 'axios'
+import './home-style.css'
 
 type movieItems={
   id:number,
@@ -17,8 +18,6 @@ export const Home:React.FC<Props>=()=> {
     const [movieData,SetmoveieData]=useState([])
     const [loading,SetLoading]=useState(true)
     const FetchMovieData=()=>{
-      setInterval(()=>console.log("hello"),5000
-      )
       console.log("Fetching movie data");
       axios({
         method: 'get',

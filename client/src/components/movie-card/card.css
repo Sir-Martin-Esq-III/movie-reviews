@@ -1,9 +1,4 @@
 .card-container {
-  margin-inline: 1%;
-  margin-bottom: 200px;
-  width: 100%;
-  height: 200px;
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,109 +6,60 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-container img {
-  border-radius: 20px;
-  max-width: 300px;
-  max-height: 100%;
-  border-right: 10px solid transparent;
+  aspect-ratio: 16/9;
+  width: clamp(300px, 100%, 500px);
 }
 
 .card-container .lower-content {
-  position: relative;
-  top: -1px;
-  border-radius: 0 0 20px 20px;
-  background-color: #292929;
-  color: white;
-  width: 300px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  background-color: grey;
+  height: inherit;
+}
+
+.card-container .lower-content p {
   display: none;
-  border-bottom: 10px solid #141414;
 }
 
 .card-container:hover {
-  z-index: 10000;
-  -webkit-animation: scaleUp 200ms ease-in forwards;
-          animation: scaleUp 200ms ease-in forwards;
-  cursor: -webkit-grab;
-  cursor: grab;
+  -webkit-animation: scale-up 200ms ease-in forwards;
+          animation: scale-up 200ms ease-in forwards;
+  -webkit-box-shadow: 5px 5px black;
+          box-shadow: 5px 5px black;
 }
 
-.card-container:hover img {
-  -webkit-animation: lowerOpacity 300ms ease-in forwards;
-          animation: lowerOpacity 300ms ease-in forwards;
-  border-radius: 20px 20px 0 0;
+.card-container:hover .lower-content p {
+  display: inline;
 }
 
-.card-container:hover .lower-content {
-  -webkit-animation: lowerOpacityLower 300ms ease-in forwards;
-          animation: lowerOpacityLower 300ms ease-in forwards;
-  display: block;
-}
-
-@-webkit-keyframes lowerOpacityLower {
-  from {
-    opacity: 0;
-    border-right: 10px solid transparent;
-  }
-  to {
-    opacity: 100;
-    border-right: 10px solid #141414;
-  }
-}
-
-@keyframes lowerOpacityLower {
-  from {
-    opacity: 0;
-    border-right: 10px solid transparent;
-  }
-  to {
-    opacity: 100;
-    border-right: 10px solid #141414;
-  }
-}
-
-@-webkit-keyframes lowerOpacity {
-  from {
-    border-right: 10px solid transparent;
-  }
-  to {
-    border-right: 10px solid #141414;
-  }
-}
-
-@keyframes lowerOpacity {
-  from {
-    border-right: 10px solid transparent;
-  }
-  to {
-    border-right: 10px solid #141414;
-  }
-}
-
-@-webkit-keyframes scaleUp {
+@-webkit-keyframes scale-up {
   from {
     -webkit-transform: scale(1);
             transform: scale(1);
+    z-index: 0;
   }
   to {
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
+    z-index: 10000;
   }
 }
 
-@keyframes scaleUp {
+@keyframes scale-up {
   from {
     -webkit-transform: scale(1);
             transform: scale(1);
+    z-index: 0;
   }
   to {
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
+    z-index: 10000;
   }
 }
 /*# sourceMappingURL=card.css.map */

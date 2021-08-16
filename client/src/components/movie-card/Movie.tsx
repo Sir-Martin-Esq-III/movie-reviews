@@ -18,7 +18,7 @@ export const Movie:React.FC<Props>=({name,imgsrc,rating,synopsis}) =>{
             <div className="card-container" onClick={onclickHandler}>
                 <img src={imgsrc} alt={`${name} poster`}/>
                 <div className="lower-content">
-                    <h1>{`${name} ${rating}`}</h1>
+                    <h1>{`${name}`}</h1>
                     <p>{synopsis}</p>
                 </div>          
             </div>

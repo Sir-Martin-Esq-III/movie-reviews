@@ -1,86 +1,50 @@
-//vars
-$width:100vw/4;
-$height:200px;
+
 
 .card-container{
-    margin-inline: 1%;
-    margin-bottom: $height;
-    width: 100%;
-    height: $height;
-    position: relative;
     display: flex;
     flex-direction: column;
-    z-index: 0;   
-
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     img{
-        border-radius: 20px;
-        max-width: 300px;
-        max-height: 100%;
-        //object-fit: cover;
-        border-right: 10px solid transparent;
-    }
-
-    .lower-content{
-        position: relative;
-        top: -1px;
-        border-radius: 0 0 20px 20px;
-        background-color: #292929;
-        color:white;
-        width: 300px;
-        height: fit-content;
-        display: none;
-        border-bottom: 10px solid #141414;
+        aspect-ratio: 16/9;
+        width: clamp(300px,100%,500px);
         
-    }
-}
-
-.card-container:hover{
-    z-index: 10000;
-    animation: scaleUp 200ms ease-in forwards;
-    cursor: grab;
-    img{
-        animation: lowerOpacity 300ms ease-in forwards;
-        border-radius: 20px 20px 0 0;
     }
     .lower-content{
-        animation: lowerOpacityLower 300ms ease-in forwards ;
-        display: block;
+       background-color: grey;
+       height: inherit;
+        p{
+            display: none;
+        }
     }
-}
 
-@keyframes lowerOpacityLower {
-    from{
-        opacity: 0;
-        border-right: 10px solid transparent;
+    &:hover{
+        animation: scale-up 200ms ease-in forwards ;
+        box-shadow: 5px 5px black;
         
-
+        .lower-content{
+           
+            p{
+                display: inline;
+            }
+        }
     }
-    to{
-        opacity: 100;
-        border-right: 10px solid #141414;
-    }
-    
-}
-@keyframes lowerOpacity {
-
-    from{
-        border-right: 10px solid transparent;
-        
-
-    }
-    to{
-        border-right: 10px solid #141414;
-    }
-    
 }
 
-@keyframes scaleUp {
+@keyframes scale-up {
+
     from{
         transform: scale(1);
+        z-index: 0;
+
     }
 
     to{
         transform: scale(1.1);
+        z-index: 10000;
+
     }
     
 }
