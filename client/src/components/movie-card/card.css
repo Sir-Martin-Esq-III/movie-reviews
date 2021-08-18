@@ -27,10 +27,21 @@
 }
 
 .card-container:hover {
+  position: absolute;
   -webkit-animation: scale-up 200ms ease-in forwards;
           animation: scale-up 200ms ease-in forwards;
   -webkit-box-shadow: 5px 5px black;
           box-shadow: 5px 5px black;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
+.card-container:hover .lower-content {
+  width: 500px;
 }
 
 .card-container:hover .lower-content p {

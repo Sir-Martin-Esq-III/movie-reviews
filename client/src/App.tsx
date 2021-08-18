@@ -28,7 +28,6 @@ export const App:React.FC=()=>{
       <Route path="/">
         <Home/>
       </Route>
-      
     </Switch>
   </Router>
   </div>  

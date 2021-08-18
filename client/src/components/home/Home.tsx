@@ -39,7 +39,11 @@ export const Home:React.FC<Props>=()=> {
         <div className="movies-container">
           {loading && <Loading/>}
           {movieData.map((list:movieItems)=>        
-              <Movie key={list.id} name={list.name}rating={list.rating} synopsis={list.synopsis.slice(0,150)+"..."} imgsrc={list.imgsrc}/>
+              <Movie key={list.id}
+                     name={list.name}
+                     rating={list.rating}
+                     synopsis={list.synopsis.slice(0,150)+"..."} 
+                     imgsrc={list.imgsrc}/>
           )}        
         </div>  
     )

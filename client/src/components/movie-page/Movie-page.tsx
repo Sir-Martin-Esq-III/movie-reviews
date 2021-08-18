@@ -19,7 +19,6 @@ interface ParamTypes {
     movieID: string
 }
 
-
 const colorRatings={
     green:"#53fc72",
     amber:"#fce653",
@@ -50,8 +49,6 @@ const review=[
 ]
 
 export const MoviePage:React.FC<Props>=()=>{
-
-    //const [movieData,SetmoveieData]=useState<MovieData>({name,imgsrc,synopsis,rating})
     const [movieData,SetmoveieData]=useState<IMovieData>({name:"",imgsrc:"",synopsis:"",rating:"",trailer:""})
     const [loading,SetLoading]=useState(true)
     let { movieID } = useParams<ParamTypes>()

@@ -21,10 +21,14 @@
     }
 
     &:hover{
-        animation: scale-up 200ms ease-in forwards ;
+        position: absolute;
+        animation: scale-up 200ms ease-in forwards;
         box-shadow: 5px 5px black;
+        height: fit-content;
+        width: min-content;
         
         .lower-content{
+            width: 500px;
            
             p{
                 display: inline;
