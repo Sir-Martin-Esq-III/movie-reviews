@@ -1,8 +1,12 @@
 import React ,{useState,useRef,useEffect,useContext}from 'react'
 import hasha from 'hasha'
 import axios from 'axios'
-
+import './login.css'
 import {loggedInContext} from '../../../LoggedInContext'
+
+import {
+   Redirect
+  } from "react-router-dom";
 
 export default function Login() {
     const [username, setUsername] = useState("")
@@ -13,6 +17,7 @@ export default function Login() {
     const pwRef = useRef<HTMLInputElement>(null)
 
     const {loggedIn,setloggedIn}=useContext(loggedInContext)
+
 
     const onSubmit=(e: React.MouseEvent<HTMLInputElement, MouseEvent>)=>{
         e.preventDefault()
@@ -25,7 +30,9 @@ export default function Login() {
             }
           }).then((res)=>{
               const valid=res.data
-              valid?setloggedIn(!loggedIn):setfailedLogIn(true) 
+              valid?
+                setloggedIn(!loggedIn)
+                :setfailedLogIn(true) 
           })
         console.log(`${username}, ${hasha(password)}`);
         
@@ -40,22 +47,31 @@ export default function Login() {
         }      
     }, [showPassword])
 
+    if(loggedIn){
+        return(
+            <Redirect to='/home'>
+
+            </Redirect>
+        )
+    }
+
+
     return (
-        <div>
-            <h1 className="greeting">Hello, welcome back please login</h1>       
+        
+        <div className="login-container">    
             <form>
                 <label htmlFor="username"> Username:</label>
                 <input type="text" name="username" id="username" value={username} onChange={(e)=>setUsername(e.target.value)} />
-                   
-                <label htmlFor="pw">Password: </label>
-                <input ref={pwRef} type="password" name="pw" id="pw" value={password} onChange={(e)=>setPassword(e.target.value)}/>  
-                <img src="https://static.thenounproject.com/png/819130-200.png" alt="toggle password show"  onClick={()=>setShowPassword(!showPassword)}/>  
+                <div className="login-row">
+                    <label htmlFor="pw">Password: </label>
+                    <input ref={pwRef} type="password" name="pw" id="pw" value={password} onChange={(e)=>setPassword(e.target.value)}/>  
+                    <img src="https://static.thenounproject.com/png/819130-200.png" alt="toggle password show"  onClick={()=>setShowPassword(!showPassword)}/>  
+                </div>
 
                 <input type="button" value="Login"  onClick={(e)=>onSubmit(e)}/>
 
                 
             </form>     
-            <h1>{`${username}, ${password}`}</h1>
         </div>
     )
 }

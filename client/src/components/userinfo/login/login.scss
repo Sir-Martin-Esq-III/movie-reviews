@@ -1,0 +1,23 @@
+.login-container{
+    padding-top: 5%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#292929;
+    color: white;
+    form{
+        display: flex;
+        flex-direction: column;
+        width: clamp(300px,25% 500px);  
+        .login-row{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            img{
+                width: 50px;
+                filter: invert(1);
+            }
+        }
+    }
+}

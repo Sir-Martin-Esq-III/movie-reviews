@@ -25,6 +25,10 @@ export const App:React.FC=()=>{
         <Header/>
       </loggedInContext.Provider>
     <Switch>
+
+    <Route path="/home">
+        <Home/>
+    </Route>
     <Route path="/login/addmovie">
       <loggedInContext.Provider value={{loggedIn,setloggedIn}}>
         <Login/>
@@ -35,6 +39,7 @@ export const App:React.FC=()=>{
           <MoviePage/>
         </loggedInContext.Provider>
       </Route>
+      
       <Route path="/">
         <Home/>
       </Route>
