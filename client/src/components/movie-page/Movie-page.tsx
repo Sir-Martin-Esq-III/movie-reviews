@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import {useParams} from "react-router-dom";
 import axios from 'axios'
 import Loading from '../loading/Loading';
 import './movieReview.css'
+
+import {loggedInContext} from '../../LoggedInContext'
+
 
 interface Props{
 }
@@ -49,9 +52,12 @@ const review=[
 ]
 
 export const MoviePage:React.FC<Props>=()=>{
+    
     const [movieData,SetmoveieData]=useState<IMovieData>({name:"",imgsrc:"",synopsis:"",rating:"",trailer:""})
     const [loading,SetLoading]=useState(true)
     let { movieID } = useParams<ParamTypes>()
+
+    const loggedin=useContext(loggedInContext)
     
     const colorRating=(rating:Number)=>{
         if (rating<3){
@@ -119,6 +125,8 @@ export const MoviePage:React.FC<Props>=()=>{
                         </div>
                     </div>
                 )}
+                {/* PLEASE REMOVE THIS WITH SOMETHING DECENT FOR ONCE */}
+                <h1>{loggedInContext?"click here to comment":"please log in to comment"}</h1>
             </div> 
             <div className="add-review">
             </div>             
