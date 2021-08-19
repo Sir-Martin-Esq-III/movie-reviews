@@ -58,11 +58,11 @@ app.post('/API/addMovie',(req,res)=>{
 app.post('/user/Login',(req,res)=>{
 
   if(usr===req.body.username&&pwHash===req.body.pw){
-    //res.send("LOG IN")
-    console.log("log in");
+    res.send(true)
+    //console.log("log in");
   }else{
-    //res.send("no login")
-    console.log("no log in");
+    res.send(false)
+    //console.log("no log in");
   }
 })
 

@@ -1,13 +1,18 @@
-import React ,{useState,useRef,useEffect}from 'react'
+import React ,{useState,useRef,useEffect,useContext}from 'react'
 import hasha from 'hasha'
 import axios from 'axios'
+
+import {loggedInContext} from '../../../LoggedInContext'
 
 export default function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
+    const [failedLogIn, setfailedLogIn] = useState(false)
 
     const pwRef = useRef<HTMLInputElement>(null)
+
+    const {loggedIn,setloggedIn}=useContext(loggedInContext)
 
     const onSubmit=(e: React.MouseEvent<HTMLInputElement, MouseEvent>)=>{
         e.preventDefault()
@@ -18,7 +23,10 @@ export default function Login() {
               username: username,
               pw: hasha(password)
             }
-          });
+          }).then((res)=>{
+              const valid=res.data
+              valid?setloggedIn(!loggedIn):setfailedLogIn(true) 
+          })
         console.log(`${username}, ${hasha(password)}`);
         
     }

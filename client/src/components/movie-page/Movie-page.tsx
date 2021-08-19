@@ -57,7 +57,7 @@ export const MoviePage:React.FC<Props>=()=>{
     const [loading,SetLoading]=useState(true)
     let { movieID } = useParams<ParamTypes>()
 
-    const loggedin=useContext(loggedInContext)
+    const {loggedIn}=useContext(loggedInContext)
     
     const colorRating=(rating:Number)=>{
         if (rating<3){
@@ -126,7 +126,7 @@ export const MoviePage:React.FC<Props>=()=>{
                     </div>
                 )}
                 {/* PLEASE REMOVE THIS WITH SOMETHING DECENT FOR ONCE */}
-                <h1>{loggedInContext?"click here to comment":"please log in to comment"}</h1>
+                <h1>{loggedIn?"click here to comment":"please log in to comment"}</h1>
             </div> 
             <div className="add-review">
             </div>             

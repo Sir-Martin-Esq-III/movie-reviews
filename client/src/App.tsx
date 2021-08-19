@@ -18,21 +18,20 @@ import { loggedInContext } from './LoggedInContext';
 export const App:React.FC=()=>{
   const [loggedIn, setloggedIn] = useState(false)
 
- 
-
-
   return (
     <div className="app">
     <Router>
-      <loggedInContext.Provider value={loggedIn}>
+      <loggedInContext.Provider value={{loggedIn,setloggedIn}}>
         <Header/>
       </loggedInContext.Provider>
     <Switch>
     <Route path="/login/addmovie">
+      <loggedInContext.Provider value={{loggedIn,setloggedIn}}>
         <Login/>
+      </loggedInContext.Provider>
       </Route>
       <Route path="/:movieID">
-        <loggedInContext.Provider value={loggedIn}>
+        <loggedInContext.Provider value={{loggedIn}}>
           <MoviePage/>
         </loggedInContext.Provider>
       </Route>

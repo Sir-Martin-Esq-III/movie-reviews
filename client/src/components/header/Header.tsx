@@ -15,8 +15,14 @@ Header component will display:
 Will become hambuger-menu on mobile view
 */
 const Header = (props: Props) => {
+    const {loggedIn,setloggedIn}=useContext(loggedInContext)
 
-    const loggedin=useContext(loggedInContext)
+    const loginToggle=(e: React.MouseEvent<HTMLDivElement, MouseEvent>)=>{
+        e.preventDefault()        
+        setloggedIn(!loggedIn)
+
+    }
+
     return (
         <div className="header-container">
             
@@ -25,29 +31,22 @@ const Header = (props: Props) => {
             </div>
             <div className="Home">
                 <h1>
-                    <Link to="/">
-                        Home
-                    </Link>
+                    <Link to="/">Home</Link>
                 </h1>
             </div>
             
             <div className="Login">
                 {/* Actually horrible, please remove*/}
-                {loggedin?
-                    <h1>
-                        <Link to="/login/addmovie">
+                {loggedIn?
+                    <h1 onClick={(e)=>loginToggle(e)}>
                             Logout
-                        </Link>
                     </h1>:
-                    <h1>
+                    <h1 >
                         <Link to="/login/addmovie"> 
                             Login
                         </Link>
-                    </h1>
-
-                
-                        
-                        }
+                    </h1> 
+                }
             </div>
             
 
