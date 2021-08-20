@@ -1,6 +1,7 @@
 import express, { response } from 'express';
 import cors from 'cors'
 import MovieDetails from "./moviedata.js"
+import UserInfo from './userinfo.js';
 import bodyParser from 'body-parser';
 import mongoose from "mongoose"
 const app = express()
@@ -10,7 +11,7 @@ const port = 8000
 app.use(bodyParser.json())
 
 //HARDCODED USERNAME/PWHASH
-const usr="tom"
+const usr="Tom98"
 const pwHash="fd37ca5ca8763ae077a5e9740212319591603c42a08a60dcc91d12e7e457b024f6bdfdc10cdc1383e1602ff2092b4bc1bb8cac9306a9965eb352435f5dfe8bb0"
 
 
@@ -56,13 +57,9 @@ app.post('/API/addMovie',(req,res)=>{
 })
 
 app.post('/user/Login',(req,res)=>{
-
-  if(usr===req.body.username&&pwHash===req.body.pw){
-    res.send(true)
-    //console.log("log in");
-  }else{
-    res.send(false)
-    //console.log("no log in");
-  }
+  UserInfo.find({username:req.body.username}).exec()
+  .then((response)=>{
+    response[0].pwhash===req.body.pw?res.send(true):res.send(false)
+  }).catch(()=>res.send(false)) 
 })
 

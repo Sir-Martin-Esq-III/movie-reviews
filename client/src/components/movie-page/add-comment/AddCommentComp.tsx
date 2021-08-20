@@ -20,7 +20,7 @@ export default function AddCommentComp({updateComments}: Props): ReactElement {
         }
         updateComments(commentObj)
     }
-    return (
+    return (    
         <div className="reviews">
             <textarea value={comment} placeholder="Add your comment!" onChange={(e)=>setcomment(e.target.value)}></textarea>
             <button onClick={(e)=>{submitHandler(e)}}>Submit!</button>
