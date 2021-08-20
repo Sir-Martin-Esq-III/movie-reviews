@@ -2,6 +2,7 @@ import React, { useEffect, useState,useContext } from 'react';
 import {useParams} from "react-router-dom";
 import axios from 'axios'
 import Loading from '../loading/Loading';
+import AddCommentComp from './add-comment/AddCommentComp';
 import './movieReview.css'
 
 import {loggedInContext} from '../../LoggedInContext'
@@ -22,13 +23,18 @@ interface ParamTypes {
     movieID: string
 }
 
+interface Icomment{
+    id:number,
+    username:string,
+    userRating:number,
+    ReviewContent:string
+}
+
 const colorRatings={
     green:"#53fc72",
     amber:"#fce653",
     red:"#ff6254"
 }
-
-
 
 const review=[
     {
@@ -55,6 +61,7 @@ export const MoviePage:React.FC<Props>=()=>{
     
     const [movieData,SetmoveieData]=useState<IMovieData>({name:"",imgsrc:"",synopsis:"",rating:"",trailer:""})
     const [loading,SetLoading]=useState(true)
+    const [comments, setcomments] = useState(review)
     let { movieID } = useParams<ParamTypes>()
 
     const {loggedIn}=useContext(loggedInContext)
@@ -82,7 +89,15 @@ export const MoviePage:React.FC<Props>=()=>{
          })
       },[movieID])
 
-      //movieData.trailer
+      //When the comments update, send that information back to the server
+      useEffect(() => {
+          console.log("SEND THE INFO BACK TO THE SERVER");
+          
+      }, [comments])
+
+      const updateComments=(newComment:Icomment)=>{
+          setcomments([...comments, newComment])
+      }
 
     return (
         <div className="moviePage">
@@ -114,7 +129,7 @@ export const MoviePage:React.FC<Props>=()=>{
 
             <div className="review-container">
 
-                {review.map((rev)=>
+                {comments.map((rev)=>
                     <div className="reviews" key={rev.id}>
                         <div className="reviewLeft">
                             <h3>{rev.username}</h3>
@@ -126,7 +141,7 @@ export const MoviePage:React.FC<Props>=()=>{
                     </div>
                 )}
                 {/* PLEASE REMOVE THIS WITH SOMETHING DECENT FOR ONCE */}
-                <h1>{loggedIn?"click here to comment":"please log in to comment"}</h1>
+                <h1>{loggedIn?<AddCommentComp updateComments={updateComments}/>:"please log in to comment"}</h1>
             </div> 
             <div className="add-review">
             </div>             
