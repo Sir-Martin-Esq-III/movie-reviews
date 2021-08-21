@@ -77,7 +77,6 @@ export const MoviePage:React.FC<Props>=()=>{
               newComment:[...movieData.reviews,[["Tom98"],[newComment]]]
             }
           }).then((res)=>{
-              movieData.reviews=
           })
           
       }
