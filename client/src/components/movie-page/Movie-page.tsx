@@ -16,7 +16,8 @@ interface IMovieData{
     imgsrc:string,
     synopsis:string,
     rating:string,
-    trailer:string
+    trailer:string,
+    reviews:[]
 }
 
 interface ParamTypes {
@@ -36,32 +37,10 @@ const colorRatings={
     red:"#ff6254"
 }
 
-const review=[
-    {
-    id:0,
-    username:"USER 1",
-    userRating:9,
-    ReviewContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem eaque natus reprehenderit vero voluptatibus! Ipsum aspernatur illum saepe repudiandae, suscipit ducimus! Non, error animi! Delectus qui voluptatibus quia incidunt aliquid libero, accusantium repellat nulla animi modi ex amet dolor ad accusamus tempore corrupti non quo rerum. Nulla tenetur quisquam perferendis?"
-    },
-    {
-    id:1,
-    username:"USER 2",
-    userRating:9,
-    ReviewContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae voluptatibus vitae amet laborum dolor cupiditate quaerat libero neque voluptas eum?"
-    },
-    {
-    id:2,
-    username:"USER 3",
-    userRating:7,
-    ReviewContent: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam velit voluptatibus nesciunt."
-    },
-]
-
 export const MoviePage:React.FC<Props>=()=>{
     
-    const [movieData,SetmoveieData]=useState<IMovieData>({name:"",imgsrc:"",synopsis:"",rating:"",trailer:""})
+    const [movieData,SetmoveieData]=useState<IMovieData>({name:"",imgsrc:"",synopsis:"",rating:"",trailer:"",reviews:[]})
     const [loading,SetLoading]=useState(true)
-    const [comments, setcomments] = useState(review)
     let { movieID } = useParams<ParamTypes>()
 
     const {loggedIn}=useContext(loggedInContext)
@@ -89,14 +68,18 @@ export const MoviePage:React.FC<Props>=()=>{
          })
       },[movieID])
 
-      //When the comments update, send that information back to the server
-      useEffect(() => {
-          console.log("SEND THE INFO BACK TO THE SERVER");
-          
-      }, [comments])
-
       const updateComments=(newComment:Icomment)=>{
-          setcomments([...comments, newComment])
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/API/AddComment',
+            data: {
+              name: movieData.name,
+              newComment:[...movieData.reviews,[["Tom98"],[newComment]]]
+            }
+          }).then((res)=>{
+              movieData.reviews=
+          })
+          
       }
 
     return (
@@ -128,15 +111,14 @@ export const MoviePage:React.FC<Props>=()=>{
 
 
             <div className="review-container">
-
-                {comments.map((rev)=>
-                    <div className="reviews" key={rev.id}>
+                {movieData.reviews.length<1&&<h3>Huh, There are now reviews here, Be the first?</h3>}
+                {movieData.reviews.map((rev)=>
+                    <div className="reviews" key={rev[0]}>
                         <div className="reviewLeft">
-                            <h3>{rev.username}</h3>
-                            <p>{rev.userRating}</p>
+                            <h3>{rev[0]}</h3>
                         </div>
                         <div className="reviewsRight">
-                            <p>{rev.ReviewContent}</p>
+                            <p>{rev[1]}</p>
                         </div>
                     </div>
                 )}

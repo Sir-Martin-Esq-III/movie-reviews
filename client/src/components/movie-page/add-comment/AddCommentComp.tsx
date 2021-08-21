@@ -12,13 +12,7 @@ export default function AddCommentComp({updateComments}: Props): ReactElement {
 
     const submitHandler=(e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault()
-        const commentObj={
-            id:5,
-            username:"Martin Wat",
-            userRating:69420,
-            ReviewContent:comment
-        }
-        updateComments(commentObj)
+        updateComments(comment)
     }
     return (    
         <div className="reviews">

@@ -63,3 +63,15 @@ app.post('/user/Login',(req,res)=>{
   }).catch(()=>res.send(false)) 
 })
 
+app.post('/API/AddComment', (req,res)=>{
+  const newComment=req.body.newComment
+  const movieName=req.body.name
+  MovieDetails.findOneAndUpdate({name:movieName},{reviews:newComment},(error,data)=>{
+    if(error){
+      console.log(error);
+    }else{
+      console.log(data);
+    }
+  })
+})
+

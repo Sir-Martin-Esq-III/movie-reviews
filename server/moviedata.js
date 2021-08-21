@@ -8,6 +8,7 @@ const movieDetailSchema= new Schema({
     synopsis:{type:String,required:true},
     rating:{type:String,required:false},
     trailer:{type:String,required:false},
+    reviews:{type:Array,required:false},
 
 })
 
