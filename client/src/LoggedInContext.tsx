@@ -2,11 +2,12 @@ import {createContext} from 'react'
 
 interface ILoggedIn{
     //remove the anys
-    loggedIn:any,
-    setloggedIn?:any
-    currentUser?:string
+    loggedIn:boolean,
+    setloggedIn?:any,
+    currentUser?:string,
+    setcurrentUser?:any
 }
 
-export const loggedInContext=createContext<ILoggedIn>({loggedIn:false,setloggedIn:"",currentUser:""})
+export const loggedInContext=createContext<ILoggedIn>({loggedIn:false,setloggedIn:"",currentUser:"",setcurrentUser:""})
 
 

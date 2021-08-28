@@ -43,7 +43,7 @@ export const MoviePage:React.FC<Props>=()=>{
     const [loading,SetLoading]=useState(true)
     let { movieID } = useParams<ParamTypes>()
 
-    const {loggedIn}=useContext(loggedInContext)
+    const {loggedIn,currentUser}=useContext(loggedInContext)
     
     const colorRating=(rating:Number)=>{
         if (rating<3){
@@ -74,7 +74,7 @@ export const MoviePage:React.FC<Props>=()=>{
             url: 'http://127.0.0.1:8000/API/AddComment',
             data: {
               name: movieData.name,
-              newComment:[...movieData.reviews,[["Tom98"],[newComment]]]
+              newComment:[...movieData.reviews,[[currentUser],[newComment]]]
             }
           }).then((res)=>{
           })

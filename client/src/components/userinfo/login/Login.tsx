@@ -16,7 +16,13 @@ export default function Login() {
 
     const pwRef = useRef<HTMLInputElement>(null)
 
-    const {loggedIn,setloggedIn}=useContext(loggedInContext)
+    const {loggedIn,setloggedIn,setcurrentUser}=useContext(loggedInContext)
+
+    const updateContext=()=>{
+        setloggedIn(!loggedIn)
+        setcurrentUser(username)
+        
+    }
 
 
     const onSubmit=(e: React.MouseEvent<HTMLInputElement, MouseEvent>)=>{
@@ -31,7 +37,7 @@ export default function Login() {
           }).then((res)=>{
               const valid=res.data
               valid?
-                setloggedIn(!loggedIn)
+                updateContext()
                 :setfailedLogIn(true) 
           })
         console.log(`${username}, ${hasha(password)}`);

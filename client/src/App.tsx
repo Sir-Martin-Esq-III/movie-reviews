@@ -14,37 +14,35 @@ import {
 } from "react-router-dom";
 
 import { loggedInContext } from './LoggedInContext';
+import { UserContext } from './UserContext';
 
 export const App:React.FC=()=>{
   //Login default should be false
   const [loggedIn, setloggedIn] = useState(true)
+  const [currentUser, setcurrentUser] = useState("this is a test")
 
   return (
     <div className="app">
+    <loggedInContext.Provider value={{loggedIn,setloggedIn,currentUser,setcurrentUser}}>
     <Router>
-      <loggedInContext.Provider value={{loggedIn,setloggedIn}}>
-        <Header/>
-      </loggedInContext.Provider>
-    <Switch>
-    <Route path="/home">
-        <Home/>
-      </Route>
-    <Route path="/login/addmovie">
-      <loggedInContext.Provider value={{loggedIn,setloggedIn}}>
-        <Login/>
-      </loggedInContext.Provider>
-      </Route>
-      <Route path="/:movieID">
-        <loggedInContext.Provider value={{loggedIn}}>
-          <MoviePage/>
-        </loggedInContext.Provider>
-      </Route>
-      <Route path="/">
-        <Home/>
-      </Route>
-    </Switch>
-  </Router>
-  </div>  
+      <Header/>
+      <Switch>
+        <Route path="/home">
+            <Home/>
+          </Route>
+        <Route path="/login/addmovie">
+            <Login/>
+        </Route>
+          <Route path="/:movieID">
+              <MoviePage/>
+          </Route>
+          <Route path="/">
+            <Home/>
+          </Route>
+      </Switch>
+    </Router>
+    </loggedInContext.Provider>
+    </div>  
   );
 }
 

@@ -25,10 +25,6 @@ const Header = (props: Props) => {
 
     return (
         <div className="header-container">
-            
-            <div className="searchbar">
-                <input type="text" name="text" id="text"/>
-            </div>
             <div className="Home">
                 <h1>
                     <Link to="/">Home</Link>
