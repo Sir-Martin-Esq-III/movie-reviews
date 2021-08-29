@@ -9,13 +9,10 @@ interface Props{
     synopsis?:string
 }
 
-const onclickHandler:React.MouseEventHandler<HTMLDivElement>=(event)=>{
-    console.log("clicked")
-}
 export const Movie:React.FC<Props>=({name,imgsrc,rating,synopsis}) =>{
     return (
         <Link to={`/${name}`}>
-            <div className="card-container" onClick={onclickHandler}>
+            <div className="card-container">
                 <img src={imgsrc} alt={`${name} poster`}/>
                 <div className="lower-content">
                     <h1>{`${name}`}</h1>

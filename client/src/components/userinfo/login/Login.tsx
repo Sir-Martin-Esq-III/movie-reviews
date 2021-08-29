@@ -19,8 +19,8 @@ export default function Login() {
     const {loggedIn,setloggedIn,setcurrentUser}=useContext(loggedInContext)
 
     const updateContext=()=>{
-        setloggedIn(!loggedIn)
-        setcurrentUser(username)
+        setloggedIn!==undefined&&setloggedIn(!loggedIn)
+        setcurrentUser!==undefined&&setcurrentUser(username)
         
     }
 
@@ -55,16 +55,14 @@ export default function Login() {
 
     if(loggedIn){
         return(
-            <Redirect to='/home'>
-
-            </Redirect>
+            <Redirect to='/'/>
         )
     }
 
-
     return (
         
-        <div className="login-container">    
+        <div className="login-container"> 
+            {failedLogIn&&<h1>Login Failed: Try again</h1>}   
             <form>
                 <label htmlFor="username"> Username:</label>
                 <input type="text" name="username" id="username" value={username} onChange={(e)=>setUsername(e.target.value)} />

@@ -3,11 +3,11 @@ import {createContext} from 'react'
 interface ILoggedIn{
     //remove the anys
     loggedIn:boolean,
-    setloggedIn?:any,
+    setloggedIn?:React.Dispatch<React.SetStateAction<boolean>>,
     currentUser?:string,
-    setcurrentUser?:any
+    setcurrentUser?:React.Dispatch<React.SetStateAction<string>>
 }
 
-export const loggedInContext=createContext<ILoggedIn>({loggedIn:false,setloggedIn:"",currentUser:"",setcurrentUser:""})
+export const loggedInContext=createContext<ILoggedIn>({loggedIn:false,setloggedIn:undefined,currentUser:"",setcurrentUser:undefined})
 
 

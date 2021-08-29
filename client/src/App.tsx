@@ -1,10 +1,9 @@
-import React ,{useState,useContext} from 'react';
+import React ,{useState} from 'react';
 import './App.css';
 import MoviePage from './components/movie-page/Movie-page'
 
 import Home from './components/home/Home';
 import Header from './components/header/Header';
-import Addmovie from './components/add-movie/Add-movie';
 import Login from './components/userinfo/login/Login';
 
 import {
@@ -14,15 +13,15 @@ import {
 } from "react-router-dom";
 
 import { loggedInContext } from './LoggedInContext';
-import { UserContext } from './UserContext';
 
 export const App:React.FC=()=>{
   //Login default should be false
   const [loggedIn, setloggedIn] = useState(true)
-  const [currentUser, setcurrentUser] = useState("this is a test")
+  const [currentUser, setcurrentUser] = useState("Tom98")
 
   return (
     <div className="app">
+    {}
     <loggedInContext.Provider value={{loggedIn,setloggedIn,currentUser,setcurrentUser}}>
     <Router>
       <Header/>

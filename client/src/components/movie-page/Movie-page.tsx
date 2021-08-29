@@ -3,33 +3,17 @@ import {useParams} from "react-router-dom";
 import axios from 'axios'
 import Loading from '../loading/Loading';
 import AddCommentComp from './add-comment/AddCommentComp';
+import  Comments  from './Comments';
 import './movieReview.css'
 
 import {loggedInContext} from '../../LoggedInContext'
+
+import {IMovieData,ParamTypes,Icomment} from '../../types'
 
 
 interface Props{
 }
 
-interface IMovieData{
-    name:string,
-    imgsrc:string,
-    synopsis:string,
-    rating:string,
-    trailer:string,
-    reviews:[]
-}
-
-interface ParamTypes {
-    movieID: string
-}
-
-interface Icomment{
-    id:number,
-    username:string,
-    userRating:number,
-    ReviewContent:string
-}
 
 const colorRatings={
     green:"#53fc72",
@@ -43,7 +27,7 @@ export const MoviePage:React.FC<Props>=()=>{
     const [loading,SetLoading]=useState(true)
     let { movieID } = useParams<ParamTypes>()
 
-    const {loggedIn,currentUser}=useContext(loggedInContext)
+    const {loggedIn}=useContext(loggedInContext)
     
     const colorRating=(rating:Number)=>{
         if (rating<3){
@@ -55,7 +39,6 @@ export const MoviePage:React.FC<Props>=()=>{
         }
     }
     
-      //On page load fetch the movie data
       useEffect(() => {
         console.log("Fetching movie data");
         axios({
@@ -67,14 +50,14 @@ export const MoviePage:React.FC<Props>=()=>{
             console.log(res.data)
          })
       },[movieID])
-
-      const updateComments=(newComment:Icomment)=>{
+      //fix any
+      const sendCommentsToServer=(newComment:string[][])=>{
         axios({
             method: 'post',
             url: 'http://127.0.0.1:8000/API/AddComment',
             data: {
               name: movieData.name,
-              newComment:[...movieData.reviews,[[currentUser],[newComment]]]
+              newComment:newComment
             }
           }).then((res)=>{
           })
@@ -107,25 +90,11 @@ export const MoviePage:React.FC<Props>=()=>{
 
 
             <h1>This is what we had to say about <u>{movieData.name}</u></h1>
-
-
-            <div className="review-container">
-                {movieData.reviews.length<1&&<h3>Huh, There are now reviews here, Be the first?</h3>}
-                {movieData.reviews.map((rev)=>
-                    <div className="reviews" key={rev[0]}>
-                        <div className="reviewLeft">
-                            <h3>{rev[0]}</h3>
-                        </div>
-                        <div className="reviewsRight">
-                            <p>{rev[1]}</p>
-                        </div>
-                    </div>
-                )}
-                {/* PLEASE REMOVE THIS WITH SOMETHING DECENT FOR ONCE */}
-                <h1>{loggedIn?<AddCommentComp updateComments={updateComments}/>:"please log in to comment"}</h1>
-            </div> 
-            <div className="add-review">
-            </div>             
+            <Comments reviews={movieData.reviews}
+                      loggedIn={loggedIn}
+                      sendCommentsToServer={sendCommentsToServer}>
+            </Comments>
+                      
         </div>
     );
 }

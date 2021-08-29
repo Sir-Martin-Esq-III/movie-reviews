@@ -1,4 +1,3 @@
-import { setMaxListeners } from 'process'
 import React, { ReactElement,useState } from 'react'
 
 
@@ -14,6 +13,7 @@ export default function AddCommentComp({updateComments}: Props): ReactElement {
         e.preventDefault()
         updateComments(comment)
     }
+    
     return (    
         <div className="reviews">
             <textarea value={comment} placeholder="Add your comment!" onChange={(e)=>setcomment(e.target.value)}></textarea>

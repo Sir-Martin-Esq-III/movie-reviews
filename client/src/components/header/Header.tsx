@@ -19,7 +19,7 @@ const Header = (props: Props) => {
 
     const loginToggle=(e: React.MouseEvent<HTMLDivElement, MouseEvent>)=>{
         e.preventDefault()        
-        setloggedIn(!loggedIn)
+        setloggedIn!==undefined&&setloggedIn(!loggedIn)
 
     }
 
